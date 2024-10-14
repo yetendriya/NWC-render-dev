@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Predictive Maintenance System</title>
+    <style>
+
+body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            /* Update the background image path */
+            background: url('https://m.eyeofriyadh.com/news_images/2021/09/2183d8c30c78d.jpeg') no-repeat center center fixed; /* Adjust this path to match your folder structure */
+            background-size: cover;
+}
+        .container {
+            background-color: rgba(12, 12, 12, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            max-width: 500px;
+            width: 100%;
+        }
+        h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #f9f9f9;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        input[type="file"] {
+            display: none;
+        }
+        label {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-bottom: 15px;
+        }
+        .file-name {
+            margin-bottom: 20px;
+            color: #f7f7f7;
+        }
+        input[type="submit"] {
+            padding: 10px 20px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Predictive Maintenance System</h1>
+        <form action="{{ url_for('predict') }}" method="post" enctype="multipart/form-data">
+            <label for="file">Choose an Excel File</label>
+            <input type="file" name="file" id="file" accept=".xlsx" required>
+            <div class="file-name" id="file-name">No file chosen</div>
+            <input type="submit" value="Upload and Predict">
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('file').addEventListener('change', function(event) {
+            const fileName = event.target.files[0].name;
+            document.getElementById('file-name').textContent = fileName;
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction Results</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            background-image: url(''); /* Add your background image here */
+            background-size: cover; /* Cover the entire background */
+            background-position: center; /* Center the background image */
+            background-repeat: no-repeat; /* Prevent background from repeating */
+        }
+
+        h1 {
+            text-align: center;
+            color: #007bff; /* Blue color for the title */
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1); /* Subtle text shadow */
+        }
+
+        .container {
+            background-color: white; /* White background for the container */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+            max-width: 800px; /* Limiting max width for the container */
+            margin: auto; /* Center the container */
+            opacity: 0.9; /* Slightly transparent to see background */
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px; /* Space between heading and table */
+        }
+
+        th, td {
+            border: 1px solid #ddd; /* Light gray border for cells */
+            padding: 12px; /* Increased padding for better spacing */
+            text-align: center;
+        }
+
+        th {
+            background-color: #007bff; /* Blue background for header */
+            color: white; /* White text for header */
+        }
+
+        tr:hover {
+            background-color: #f1f1f1; /* Highlight row on hover */
+        }
+
+        a {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #28a745; /* Green background for the link */
+            color: white;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s; /* Smooth transition */
+        }
+
+        a:hover {
+            background-color: #218838; /* Darker green on hover */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Prediction Results</h1>
+        
+        <!-- Risky Pipelines Table -->
+        <h2>Risky Pipelines (Probability > 80%)</h2>
+        <div>
+            {% if risky_table %}
+                {{ risky_table|safe }} <!-- Placeholder for the risky pipelines table -->
+            {% else %}
+                <p>No risky pipelines detected.</p>
+            {% endif %}
+        </div>
+
+        <!-- Normal Pipelines Table -->
+        <h2>All Predictions</h2>
+        <div>
+            {{ normal_table|safe }} <!-- Placeholder for the normal predictions table -->
+        </div>
+
+        <a href="{{ url_for('index') }}">Upload another file</a>
+    </div>
+</body>
+</html>
